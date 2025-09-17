@@ -10,7 +10,7 @@ router = APIRouter(prefix="/sessions", tags=["sessions"])
 def add_session(session: SessionCreate):
     for spot in temp_spot_list:
         if session.spot_id == spot.spot_id:
-            session_id = len(temp_session_list) + 1
+            session_id = len(temp_session_list) + 1. #will change once using db
             new_session = SessionResponse(session_id=session_id, **session.dict())
             temp_session_list.append(new_session)
             return new_session

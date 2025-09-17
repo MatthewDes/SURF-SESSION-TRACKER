@@ -16,7 +16,7 @@ def get_spot_or_404(spot_id: int) -> SpotResponse:
 #add spots
 @router.post("/", response_model=SpotResponse)
 def add_spot(spot: SpotCreate):
-    spot_id = len(temp_spot_list) + 1
+    spot_id = len(temp_spot_list) + 1. #will change once using db
     new_spot = SpotResponse(spot_id=spot_id, **spot.dict())
     temp_spot_list.append(new_spot)
     return new_spot
