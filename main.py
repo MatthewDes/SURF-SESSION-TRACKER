@@ -1,12 +1,12 @@
 from fastapi import FastAPI #, HTTPException 
-from routers import spots
+from routers import spots, sessions
 
 #from typing import List 
 
 app = FastAPI() 
 
 app.include_router(spots.router) #I need to learn what this means
-
+app.include_router(sessions.router)
 
 
 
