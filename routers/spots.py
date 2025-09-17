@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException
-from models import SpotCreate, SpotResponse #only works when running from project root
+from models import SpotCreate, SpotResponse, SessionResponse #only works when running from project root
+from storage import temp_spot_list, temp_session_list #temp import, will change when using db
 
 router = APIRouter(prefix="/spots", tags=["spots"])
 
-temp_spot_list = []
 
 #add spots
 @router.post("/", response_model=SpotResponse)
@@ -27,4 +27,11 @@ def get_spot(spot_id: int):
     raise HTTPException(status_code=404, detail="Spot with the given ID does not exist. ") 
 
 
-
+#get sessions at a certain spot
+@router.get("/{spot_id}/sessions", response_model=list[SessionResponse])
+def get_sessions_at_spot(spot_id: int):
+    spot = next((s for s in temp_spot_list if s.spot_id == spot_id), None)
+    if spot is None:
+        raise HTTPException(status_code=404, detail="Spot with the given ID does not exist. ")
+    
+    return [session for session in temp_session_list if session.spot_id == spot_id]
