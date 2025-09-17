@@ -10,7 +10,7 @@ class SpotCreate(BaseModel):
     longitude: confloat(ge=-180, le=180)
     description: Optional[str] = None
 
-class Spot(SpotCreate):
+class SpotResponse(SpotCreate):
     spot_id: conint(gt=0)
 
 
@@ -25,6 +25,6 @@ class SessionCreate(BaseModel):
     waves_caught: conint(ge=0)
     notes: Optional[str] = None
 
-class Session(SessionCreate):
+class SessionResponse(SessionCreate):
     session_id: conint(gt=0)
     
