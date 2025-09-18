@@ -22,16 +22,13 @@ def create_spot():
         "longitude": 18.469,
         "description": "Beginner friendly surf spot"
         })
+    return response
 
 
+#tests
 
 def test_create_spot():
-    response = client.post("/spots", json={
-        "name": "Muizenberg",
-        "latitude": -34.105,
-        "longitude": 18.469,
-        "description": "Beginner friendly surf spot"
-        })
+    response = create_spot()
     assert response.status_code == 200
     data = response.json()
     assert data["name"] == "Muizenberg" #Hardcoding expected JSON (entire thing) can lead to errors later if i change/add fields.

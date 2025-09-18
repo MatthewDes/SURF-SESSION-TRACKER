@@ -28,4 +28,4 @@ def get_session(session_id: int):
     for session in temp_session_list:
         if session.session_id == session_id:
             return session
-    raise HTTPException(status_code=404, detail="Session with the given ID does not exist. ")
+    raise HTTPException(status_code=404, detail="Session with the given ID does not exist.")
