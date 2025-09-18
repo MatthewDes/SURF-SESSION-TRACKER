@@ -29,7 +29,7 @@ def create_spot():
 
 def test_create_spot():
     response = create_spot()
-    assert response.status_code == 200
+    assert response.status_code == 201
     data = response.json()
     assert data["name"] == "Muizenberg" #Hardcoding expected JSON (entire thing) can lead to errors later if i change/add fields.
     assert data["spot_id"] == 1

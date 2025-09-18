@@ -42,7 +42,7 @@ def create_session(spot):
 
 def test_create_session(spot):
     response = create_session(spot)
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert response.json()["spot_id"] == spot["spot_id"]
 
 def test_read_all_sessions(spot):

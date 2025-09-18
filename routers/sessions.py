@@ -6,7 +6,7 @@ from storage import temp_spot_list, temp_session_list #temp import, will change 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
 
 #add session
-@router.post("/", response_model=SessionResponse)
+@router.post("/", response_model=SessionResponse, status_code=201)
 def add_session(session: SessionCreate):
     for spot in temp_spot_list:
         if session.spot_id == spot.spot_id:
