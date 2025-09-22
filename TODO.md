@@ -3,11 +3,11 @@
 This phase focuses on transitioning from in-memory persistence to a real database, implementing user authentication, and establishing full CRUD (Create, Read, Update, Delete) operations for Spots and Sessions with proper validation and error handling.
 
 ## Database Setup & ORM
-- [ ] **Choose a Database:** Decide between SQLite (for development) and PostgreSQL (for production).
-- [ ] **Install Database Driver:** Install the appropriate Python package (e.g., `psycopg2-binary` for PostgreSQL, `sqlite3` is built-in).
-- [ ] **Configure SQLAlchemy:**
-    - [ ] Set up database connection string.
-    - [ ] Initialize SQLAlchemy engine and session.
+- [x] **Choose a Database:** Decide between SQLite (for development) and PostgreSQL (for production).
+- [x] **Install Database Driver:** Install the appropriate Python package (e.g., `psycopg2-binary` for PostgreSQL, `sqlite3` is built-in).
+- [x] **Configure SQLAlchemy:**
+    - [x] Set up database connection string.
+    - [x] Initialize SQLAlchemy engine and session.
 - [ ] **Define SQLAlchemy Models:**
     - [ ] Convert existing Pydantic `Spot` and `Session` schemas into SQLAlchemy ORM models.
     - [ ] Add necessary fields (e.g., primary keys, foreign keys for user association).
