@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from models import SessionCreate, SessionResponse #only works when running from project root
-from storage import temp_spot_list, temp_session_list #temp import, will change when using db
+from schemas.sessions_schemas import SessionCreate, SessionResponse #only works when running from project root
+from storage_temp import temp_spot_list, temp_session_list #temp import, will change when using db
 
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
