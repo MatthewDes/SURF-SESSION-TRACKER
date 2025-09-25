@@ -1,12 +1,11 @@
 from pydantic import BaseModel, conint, confloat
 from typing import Optional
-from datetime import date, time
+from datetime import datetime
 
 
 class SessionCreate(BaseModel):
     spot_id: conint(gt=0)
-    date: date
-    time: time
+    session_time: datetime
     rating: conint(ge=0, le=5)
     wave_height: confloat(ge=0)
     tide: str

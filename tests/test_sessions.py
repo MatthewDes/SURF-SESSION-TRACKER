@@ -27,8 +27,7 @@ def spot():
 def create_session(spot):
     response = client.post("/sessions", json={
         "spot_id": spot["spot_id"],
-        "date": "2025-09-18",
-        "time": "07:30:00",
+        "session_time": "2025-09-25 17:39:00",
         "rating": 4,
         "wave_height": 1.8,
         "tide": "mid",
@@ -72,8 +71,7 @@ def test_invalid_session_id(spot):
 def test_invalid_create_session(spot):
     response = client.post("/sessions", json={
         "spot_id": spot["spot_id"],
-        "date": "12 June 2025",
-        "time": "07:30:00",
+        "session_time": "7am today",
         "rating": 4,
         "wave_height": 1.8,
         "tide": "mid",
@@ -85,8 +83,7 @@ def test_invalid_create_session(spot):
 def test_create_session_with_invalid_spot():
     response = client.post("/sessions", json={
         "spot_id": 999,  # no such spot
-        "date": "2025-09-18",
-        "time": "07:30:00",
+        "session_time": "2025-09-25 17:39:00",
         "rating": 3,
         "wave_height": 1.0,
         "tide": "low",

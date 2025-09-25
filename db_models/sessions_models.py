@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, Date, Time, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, Enum
 from sqlalchemy.orm import relationship
 from database import Base
 
@@ -8,11 +8,10 @@ class Session(Base):
 
     id = Column(Integer, primary_key=True)
     spot_id = Column(Integer, ForeignKey("spots.id"), nullable=False)
-    date = Column(Date, nullable=False)
-    time = Column(Time, nullable=False)
+    session_time = Column(DateTime, nullable=False)
     rating = Column(Float, nullable=False)
     wave_height = Column(Float, nullable=False)
-    tide = Column(String, nullable=False)
+    tide = Column(Enum("low", "mid", "high", name="tide_enum"), nullable=False)
     waves_caught = Column(Integer, nullable=False)
     notes = Column(String, nullable=True)  # optional
 

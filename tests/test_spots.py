@@ -70,8 +70,7 @@ def test_sessions_at_spot():
     create_spot()
     session = client.post("/sessions", json={
   "spot_id": 1,
-  "date": "2025-09-18",
-  "time": "07:30:00",
+  "session_time": "2025-09-25 17:39:00",
   "rating": 4,
   "wave_height": 1.8,
   "tide": "mid",
