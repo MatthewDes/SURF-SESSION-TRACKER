@@ -8,10 +8,10 @@ This phase focuses on transitioning from in-memory persistence to a real databas
 - [x] **Configure SQLAlchemy:**
     - [x] Set up database connection string.
     - [x] Initialize SQLAlchemy engine and session.
-- [ ] **Define SQLAlchemy Models:**
-    - [ ] Convert existing Pydantic `Spot` and `Session` schemas into SQLAlchemy ORM models.
-    - [ ] Add necessary fields (e.g., primary keys, foreign keys for user association).
-    - [ ] Define relationships between models (e.g., User-Spot, User-Session, Spot-Session).
+- [x] **Define SQLAlchemy Models:**
+    - [x] Convert existing Pydantic `Spot` and `Session` schemas into SQLAlchemy ORM models.
+    - [x] Add necessary fields (e.g., primary keys, foreign keys for user association).
+    - [x] Define relationships between models (e.g., User-Spot, User-Session, Spot-Session). (have not created users yet.)
 
 ## Database Migrations with Alembic
 - [ ] **Install Alembic:** Add `alembic` to `requirements.txt` and install.
