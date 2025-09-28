@@ -2,8 +2,8 @@ from fastapi.testclient import TestClient
 import pytest
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) #because main is in root whilst this is in subfolder
-from main import app
-from storage_temp import temp_session_list, temp_spot_list
+from app.main import app
+from app.storage_temp import temp_session_list, temp_spot_list
 
 
 client = TestClient(app)

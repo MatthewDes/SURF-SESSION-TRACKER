@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from schemas.spots_schemas import SpotCreate, SpotResponse  #only works when running from project root
 from schemas.sessions_schemas import SessionResponse
-from storage_temp import temp_spot_list, temp_session_list #temp import, will change when using db
+from app.storage_temp import temp_spot_list, temp_session_list #temp import, will change when using db
 
 router = APIRouter(prefix="/spots", tags=["spots"])
 
