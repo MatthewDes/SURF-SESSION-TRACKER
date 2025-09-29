@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Numeric
 from sqlalchemy.orm import relationship
-from app.database import Base
+from . import Base
 
 
 class Spot(Base):
