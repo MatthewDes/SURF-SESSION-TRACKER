@@ -1,5 +1,5 @@
 from fastapi import FastAPI #, HTTPException 
-from routers import spots, sessions
+from app.routers import spots, sessions
 
 #from typing import List 
 

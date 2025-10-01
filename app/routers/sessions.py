@@ -1,13 +1,15 @@
-from fastapi import APIRouter, HTTPException
-from schemas.sessions_schemas import SessionCreate, SessionResponse #only works when running from project root
-from app.storage_temp import temp_spot_list, temp_session_list #temp import, will change when using db
+from fastapi import APIRouter, HTTPException, Depends
+from sqlalchemy.orm import Session
 
+from app.schemas.sessions_schemas import SessionCreate, SessionResponse #only works when running from project root
+from app.database import get_db
+from app.crud.spots_crud import create_session, get_session, get_all_sessions
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
 
 #add session
 @router.post("/", response_model=SessionResponse, status_code=201)
-def add_session(session: SessionCreate):
+def add_session(session: SessionCreate, db: Session = Depends(get_db):
     for spot in temp_spot_list:
         if session.spot_id == spot.spot_id:
             session_id = len(temp_session_list) + 1. #will change once using db
