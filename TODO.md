@@ -14,11 +14,11 @@ This phase focuses on transitioning from in-memory persistence to a real databas
     - [x] Define relationships between models (e.g., User-Spot, User-Session, Spot-Session). (have not created users yet.)
 
 ## Database Migrations with Alembic
-- [ ] **Install Alembic:** Add `alembic` to `requirements.txt` and install.
-- [ ] **Initialize Alembic:** Run `alembic init` to set up migration environment.
-- [ ] **Configure Alembic:** Update `alembic.ini` and `env.py` to connect to your database and use your SQLAlchemy models.
-- [ ] **Create Initial Migration:** Generate the first migration script to create tables for `Spot`, `Session`, and `User` models.
-- [ ] **Apply Migrations:** Run `alembic upgrade head` to apply the migrations to your database.
+- [x] **Install Alembic:** Add `alembic` to `requirements.txt` and install.
+- [x] **Initialize Alembic:** Run `alembic init` to set up migration environment.
+- [x] **Configure Alembic:** Update `alembic.ini` and `env.py` to connect to your database and use your SQLAlchemy models.
+- [x] **Create Initial Migration:** Generate the first migration script to create tables for `Spot`, `Session`, and `User` models. (i havent created user model yet)
+- [x] **Apply Migrations:** Run `alembic upgrade head` to apply the migrations to your database.
 
 ## User Authentication (JWT)
 - [ ] **Install Authentication Libraries:** Add `python-jose[cryptography]` and `passlib[bcrypt]` (or `passlib[argon2]`) to `requirements.txt` and install.
