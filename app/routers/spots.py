@@ -3,15 +3,14 @@ from sqlalchemy.orm import Session
 
 from app.schemas import SpotCreate, SpotResponse, SessionResponse  #only works when running from project root
 from app.database import get_db
-from app.crud.spots_crud import create_spot, get_spot, get_all_spots, get_sessions_at_spot
+from app.crud import create_spot, get_spot, get_all_spots, get_sessions_at_spot
 
-#PHASE 1 - CAN BE REMOVED
-#from app.storage_temp import temp_spot_list, temp_session_list #temp import, will change when using db
 
 router = APIRouter(prefix="/spots", tags=["spots"])
 
 
 #helper function for get_spot routes (get_spot_endpoint, get_sessions_at_spot_endpoint)
+#could be moved into a dependancy file later
 def get_spot_endpoint_or_404(db: Session, spot_id: int) -> SpotResponse:
     spot = get_spot(db, spot_id)
     if spot is None:

@@ -9,4 +9,4 @@ class SpotCreate(BaseModel):
     description: Optional[str] = None
 
 class SpotResponse(SpotCreate):
-    spot_id: conint(gt=0)
+    id: conint(gt=0)

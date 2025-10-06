@@ -13,4 +13,4 @@ class SessionCreate(BaseModel):
     notes: Optional[str] = None
 
 class SessionResponse(SessionCreate):
-    session_id: conint(gt=0)
+    id: conint(gt=0)
