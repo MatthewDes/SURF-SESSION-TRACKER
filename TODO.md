@@ -39,12 +39,12 @@ This phase focuses on transitioning from in-memory persistence to a real databas
     - [ ] Extract user ID from token.
 
 ## CRUD Endpoints for Spots & Sessions
-- [ ] **Refactor Routers:** Update `routers/spots.py` and `routers/sessions.py` to use SQLAlchemy for database interactions instead of in-memory storage.
+- [x] **Refactor Routers:** Update `routers/spots.py` and `routers/sessions.py` to use SQLAlchemy for database interactions instead of in-memory storage.
 - [ ] **Implement Protected Routes:** Apply the JWT authentication dependency to all CRUD endpoints for Spots and Sessions.
 - [ ] **Ensure User Ownership:** Modify CRUD operations to ensure users can only access/modify their own Spots and Sessions.
 - [ ] **Create Endpoints for Spots:**
-    - [ ] `POST /spots`: Create a new surf spot (requires authentication).
-    - [ ] `GET /spots`: Retrieve all user's surf spots (requires authentication).
+    - [x] `POST /spots`: Create a new surf spot (requires authentication).
+    - [x] `GET /spots`: Retrieve all user's surf spots (requires authentication).
     - [ ] `GET /spots/{spot_id}`: Retrieve a specific surf spot by ID (requires authentication and ownership).
     - [ ] `PUT /spots/{spot_id}`: Update a surf spot by ID (requires authentication and ownership).
     - [ ] `DELETE /spots/{spot_id}`: Delete a surf spot by ID (requires authentication and ownership).

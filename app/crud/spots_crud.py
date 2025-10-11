@@ -22,3 +22,19 @@ def get_all_spots(db:Session, skip: int = 0, limit: int = 100):
 def get_sessions_at_spot(db: Session, spot_id: int, skip: int = 0, limit: int = 100):
     return db.query(db_models.Session).filter(db_models.Session.spot_id == spot_id).offset(skip).limit(limit).all()
     #placed this function under spots because the endpoint function is in routers/spots.py 
+
+
+#PUT
+def update_spot(db: Session, spot_id: int, updated_spot: schemas.SpotCreate):
+    db_spot = db.query(db_models.Spot).filter(db_models.Spot.id == spot_id).first()   #find item
+    if db_spot is None:     #does item exist?
+        return None
+    
+    update_data = updated_spot.model_dump()   #Get dict representation of new data from Pydantic model
+    
+    for key, value in update_data.items():    # Iterate over new data and set corresponding attributes on ORM object
+        setattr(db_spot, key, value)
+        
+    db.commit() 
+    db.refresh(db_spot)
+    return db_spot
