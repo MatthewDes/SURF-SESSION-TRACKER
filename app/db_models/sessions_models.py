@@ -7,7 +7,7 @@ class Session(Base):
     __tablename__ = "sessions"
 
     id = Column(Integer, primary_key=True)
-    spot_id = Column(Integer, ForeignKey("spots.id"), nullable=False)
+    spot_id = Column(Integer, ForeignKey("spots.id", ondelete="CASCADE"), nullable=False)
     session_time = Column(DateTime, nullable=False)
     rating = Column(Float, nullable=False)
     wave_height = Column(Float, nullable=False)

@@ -12,6 +12,6 @@ class Spot(Base):
     longitude = Column(Numeric(10, 7), nullable=False)
     description = Column(String, nullable=True)  # optional
 
-    sessions = relationship("Session", back_populates="spot")
+    sessions = relationship("Session", back_populates="spot", cascade="all, delete-orphan")
 
     

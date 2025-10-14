@@ -1,8 +1,8 @@
-"""initial create spots and sessions
+"""initial tables
 
-Revision ID: c230653247fc
+Revision ID: e68903b32041
 Revises: 
-Create Date: 2025-09-29 09:46:05.637133
+Create Date: 2025-10-14 12:13:39.140042
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'c230653247fc'
+revision: str = 'e68903b32041'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -39,7 +39,7 @@ def upgrade() -> None:
     sa.Column('tide', sa.Enum('low', 'mid', 'high', name='tide_enum'), nullable=False),
     sa.Column('waves_caught', sa.Integer(), nullable=False),
     sa.Column('notes', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['spot_id'], ['spots.id'], ),
+    sa.ForeignKeyConstraint(['spot_id'], ['spots.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
