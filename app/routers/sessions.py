@@ -4,16 +4,12 @@ from sqlalchemy.orm import Session
 from app.schemas import SessionCreate, SessionResponse #only works when running from project root
 from app.database import get_db
 from app.crud import create_session, get_session, get_all_sessions, update_session, delete_session
-from app.routers.helpers import get_spot_endpoint_or_404
+from app.routers.helpers import get_spot_endpoint_or_404, get_session_not_found_exception
 
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
 
-def get_session_not_found_exception(session_id: int):
-    return HTTPException(
-        status_code=status.HTTP_404_NOT_FOUND, 
-        detail=f"Session with ID {session_id} does not exist." # Dynamic message
-    )
+
 
 #add session
 @router.post("/", response_model=SessionResponse, status_code=status.HTTP_201_CREATED)
@@ -50,5 +46,5 @@ def update_session_endpoint(session_id: int, session: SessionCreate, db: Session
 @router.delete("/{session_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_session_endpoint(session_id: int, db: Session = Depends(get_db)):
     if delete_session(db, session_id):
-        return {"message": "Successfully deleted spot"}
+        return {"message": "Successfully deleted session"}
     raise get_session_not_found_exception(session_id)

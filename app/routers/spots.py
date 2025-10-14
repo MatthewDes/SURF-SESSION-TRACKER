@@ -1,17 +1,17 @@
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, status
 from sqlalchemy.orm import Session
 
 from app.schemas import SpotCreate, SpotResponse, SessionResponse  #only works when running from project root
 from app.database import get_db
-from app.crud import create_spot, get_spot, get_all_spots, get_sessions_at_spot, update_spot
-from app.routers.helpers import get_spot_endpoint_or_404
+from app.crud import create_spot, get_spot, get_all_spots, get_sessions_at_spot, update_spot, delete_spot
+from app.routers.helpers import get_spot_endpoint_or_404, get_spot_not_found_exception
 
 
 router = APIRouter(prefix="/spots", tags=["spots"])
 
 
 #add spots
-@router.post("/", response_model=SpotResponse, status_code=201)
+@router.post("/", response_model=SpotResponse, status_code=status.HTTP_201_CREATED)
 def create_spot_endpoint(spot: SpotCreate, db: Session = Depends(get_db)):
     return create_spot(db, spot)
 
@@ -39,5 +39,14 @@ def get_sessions_at_spot_endpoint(spot_id: int, skip: int = 0, limit: int = 100,
 def update_spot_endpoint(spot_id: int, spot: SpotCreate, db: Session = Depends(get_db)):
     updated_spot = update_spot(db, spot_id, spot)
     if updated_spot is None:
-        raise HTTPException(status_code=404, detail="Spot with the given ID does not exist.")
+        raise get_spot_not_found_exception(spot_id)
     return updated_spot
+
+
+#delete spot
+#deletes all sessions linked to it
+@router.delete("/{spot_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_spot_endpoint(spot_id: int, db: Session = Depends(get_db)):
+    if delete_spot(db, spot_id):
+        return {"message": "Successfully deleted spot and all it's sessions"}
+    raise get_spot_not_found_exception(spot_id)

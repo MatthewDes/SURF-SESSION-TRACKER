@@ -26,7 +26,7 @@ def get_sessions_at_spot(db: Session, spot_id: int, skip: int = 0, limit: int = 
 
 #PUT
 def update_spot(db: Session, spot_id: int, updated_spot: schemas.SpotCreate):
-    db_spot = db.query(db_models.Spot).filter(db_models.Spot.id == spot_id).first()   #find item
+    db_spot = get_spot(db, spot_id) #find item
     if db_spot is None:     #does item exist?
         return None
     
@@ -38,3 +38,14 @@ def update_spot(db: Session, spot_id: int, updated_spot: schemas.SpotCreate):
     db.commit() 
     db.refresh(db_spot)
     return db_spot
+
+
+#DELETE
+#Will delete all sessions linked to spot
+def delete_spot(db: Session, spot_id: int):
+    db_spot = get_spot(db, spot_id)
+    if db_spot:
+        db.delete(db_spot)
+        db.commit()
+        return True
+    return False    #item not found
