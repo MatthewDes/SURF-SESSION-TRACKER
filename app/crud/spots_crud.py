@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app import db_models, schemas #SpotCreate, Spot, Session
+from app import db_models, schemas 
 
 #POST
 def create_spot(db: Session, spot_in: schemas.SpotCreate):
