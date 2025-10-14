@@ -1,14 +1,19 @@
 from pydantic import BaseModel, conint, confloat
 from typing import Optional
 from datetime import datetime
+from enum import Enum
 
+class TideEnum(str, Enum):
+    LOW = "low"
+    MID = "mid"
+    HIGH = "high"
 
 class SessionCreate(BaseModel):
     spot_id: conint(gt=0)
     session_time: datetime
     rating: conint(ge=0, le=5)
     wave_height: confloat(ge=0)
-    tide: str
+    tide: TideEnum
     waves_caught: conint(ge=0)
     notes: Optional[str] = None
 
