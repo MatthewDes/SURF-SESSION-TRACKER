@@ -20,7 +20,7 @@ def get_all_sessions(db: Session, skip: int = 0, limit: int = 100):
 
 #PUT
 def update_session(db: Session, session_id: int, updated_session: schemas.SessionCreate):
-    db_session = db.query(db_models.Session).filter(db_models.Session.id == session_id).first() 
+    db_session = get_session(db, session_id)
     if db_session is None:
         return None
 
@@ -32,3 +32,12 @@ def update_session(db: Session, session_id: int, updated_session: schemas.Sessio
     db.commit()
     db.refresh(db_session)
     return db_session
+
+#DELETE
+def delete_session(db: Session, session_id: int) -> bool:
+    db_session = get_session(db, session_id)
+    if db_session:
+        db.delete(db_session)
+        db.commit()
+        return True
+    return False    #item not found
