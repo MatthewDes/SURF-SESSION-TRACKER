@@ -46,5 +46,5 @@ def update_session_endpoint(session_id: int, session: SessionCreate, db: Session
 @router.delete("/{session_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_session_endpoint(session_id: int, db: Session = Depends(get_db)):
     if delete_session(db, session_id):
-        return {"message": "Successfully deleted session"}
+        return
     raise get_session_not_found_exception(session_id)

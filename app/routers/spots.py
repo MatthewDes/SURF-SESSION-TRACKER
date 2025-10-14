@@ -48,5 +48,5 @@ def update_spot_endpoint(spot_id: int, spot: SpotCreate, db: Session = Depends(g
 @router.delete("/{spot_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_spot_endpoint(spot_id: int, db: Session = Depends(get_db)):
     if delete_spot(db, spot_id):
-        return {"message": "Successfully deleted spot and all it's sessions"}
+        return 
     raise get_spot_not_found_exception(spot_id)
