@@ -3,6 +3,7 @@
 A FastAPI project to track surf spots and sessions.  
 Currently, all data is stored in memory (lost when the server restarts).  
 Phase 1 implements CRUD basics for spots and sessions.
+(edit) - phase one finished.
 
 ## Features
 - **Spots**
